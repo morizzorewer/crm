@@ -1,0 +1,73 @@
+
+
+from django.db import models
+
+class Employees(models.Model):
+    name=models.CharField(max_length=200)
+    department=models.CharField(max_length=200)
+    salary=models.PositiveIntegerField()
+    email=models.EmailField(unique=True)
+    contact=models.CharField(max_length=10)
+    age=models.PositiveIntegerField()
+
+    orm query for creating  objects
+    >>Employees.objects.create(name="",department="",salary= ,email="",age= ,contact="")
+                  
+orm query for fetching all record
+>> qs=Employees.objects.all()
+
+orm query for fetching specific employ
+>> qs=Employees.objects.get(id=1)
+
+
+<<FILTER>>
+orm query for filtering query records
+>> qs=Employees.objects.filter(department="hr")
+>> qs=Employees.objects.filter( salary__gte=45000)
+  >>__gte =greater then equal to
+>> qs=Employees.objects.filter( salary__lte=56000)
+  >>__lte =less then equal to
+>>__lt   
+>>__gt            
+
+<<EXCLUDE>>
+  orm query for excluding an object
+qs=Employees.objects.exclude(department="hr")
+
+<<TO UPDATE>>
+qs=Employees.objects.filter(id=2).update(contact="new contact",age=32)
+
+<<TO DELETE>>
+qs=Employees.objects.filter(id=1).delete()
+
+<<TO SORT>>
+Ascending order
+qs=Employees.objects.all().order_by("salary")
+
+Descending order
+qs=Employees.objects.all().order_by("-salary")
+
+
+
+
+<< In url these names are not allowed to run=( create and update and delete)     >>
+                                                add,      change,    remove
+ <<five views>>
+ create,list,update,delete
+
+<< templates>>
+ create,list,edit,details
+  
+  <<URLS>>
+ lh:8000/employees/id/change -update
+ lh:8000/employees/all -list
+ lh:8000/employees/id/ -details
+ lh:8000/employees/add-create
+
+
+         <<note:>>
+ 1.if it is form we use {as_p}
+ 2."TO EXIT FROM SHELL USE >>(CTRL+Z)<<"
+ 3.if we use filter wemust use for loop and if we use get there is no need to use for loop.
+ 4. idf we use  then id <> for integer value including so <int:>
+  int.pk il detail pokan url 'emp-detail' emp.id
