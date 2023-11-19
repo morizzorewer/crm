@@ -8,7 +8,10 @@ class Employees(models.Model):
     email=models.EmailField(unique=True)
     contact=models.CharField(max_length=10)
     age=models.PositiveIntegerField()
-
+    profile_pic=models.ImageField(upload_to="images",null=True,blank=True)
+    dob=models.DateField(null=True,blank=True)
+                                                                               
+    
     def __str__(self) :
         return self.name
                   
